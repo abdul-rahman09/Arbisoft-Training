@@ -11,5 +11,4 @@ export interface Props {
 export interface TodoItem {
     id: number;
     text: string;
-    addItem: Function;
 }

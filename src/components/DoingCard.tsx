@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
-import {getTodos, postTodos} from "../redux/actions/index"
+import {getDOINGs, postDOINGs} from "../redux/actions/index"
 import Presentation from "./AddPresentation";
-import {TodoItem} from "./models"
 
 function AddCard(props:any) {
     const [todos, setTodos] = useState([]);
@@ -10,9 +9,7 @@ function AddCard(props:any) {
     const [textData, setTextData] = useState("");
 
     useEffect(()=>{
-        props.getTodos()
-        props.postTodos({id:2, text: "Typescript"})
-        props.postTodos({id:3, text: "Styled Component"})
+        props.getDOINGs()
     }, [])
 
     useEffect(()=>{
@@ -44,7 +41,7 @@ function AddCard(props:any) {
 
     const addNewItem = () =>{
         const id:number = Math.floor(Math.random()*1000)+3
-        props.postTodos({id:id, text: textData})
+        props.postDOINGs({id:id, text: textData})
 
     }
     
@@ -58,12 +55,12 @@ function AddCard(props:any) {
 
 const stateToProps = (state:any) =>{
   return{
-    todos: state.todos,
-    newItem: state.postTodo
+    todos: state.doing,
+    newItem: state.postDoing
   } 
 }
 const mapDispatchToProps = {
-    getTodos,
-    postTodos,
+    getDOINGs,
+    postDOINGs,
 }
 export default connect(stateToProps, mapDispatchToProps)(AddCard);

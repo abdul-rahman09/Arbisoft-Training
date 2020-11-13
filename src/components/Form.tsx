@@ -26,7 +26,7 @@ const MyX = styled.span`
 function Form(props:any) {
     return(
         <div>
-            <MyInput onChange={props.setText}/>
+            <MyInput onChange={props.setText} value={props.textData}/>
 
             <StyledButton className="btn btn-success" onClick={props.addNewItem}>Add Card</StyledButton>
             <MyX>X</MyX>
