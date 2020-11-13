@@ -29,7 +29,7 @@ function Form(props:any) {
             <MyInput onChange={props.setText} value={props.textData}/>
 
             <StyledButton className="btn btn-success" onClick={props.addNewItem}>Add Card</StyledButton>
-            <MyX>X</MyX>
+            <MyX onClick={props.close}>X</MyX>
             {/* <span>X</span> */}
         </div>
     )

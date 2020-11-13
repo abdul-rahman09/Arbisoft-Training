@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
-import {getTodos, postTodos} from "../redux/actions/index"
+import {getTodos, postTodos, showEditItem, saveEditItem, closePressed} from "../redux/actions/index"
 import Presentation from "./AddPresentation";
 import {TodoItem} from "./models"
 
@@ -8,11 +8,12 @@ function AddCard(props:any) {
     const [todos, setTodos] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const [textData, setTextData] = useState("");
+    const [editData, setEditData] = useState("");
 
     useEffect(()=>{
         props.getTodos()
-        props.postTodos({id:2, text: "Typescript"})
-        props.postTodos({id:3, text: "Styled Component"})
+        props.postTodos({id:2, text: "Typescript", showEdit: false})
+        props.postTodos({id:3, text: "Styled Component", showEdit: false})
     }, [])
 
     useEffect(()=>{
@@ -33,24 +34,41 @@ function AddCard(props:any) {
         setShowForm(true)
 
     }
-    const editItem = (id: number) =>{
-        console.log(`EDIT ITEM NUMBER ${id}` )
+    const editItem = (item: any) =>{
+        // console.log(`EDIT ITEM NUMBER ${id}`)
+        props.showEditItem(item.id)
+        setEditData(item.text)
     }
 
     const setText = (evt:any) =>{
         setTextData(evt.target.value)
+    }
 
+    const updateEditText = (evt:any)=> {
+        console.log("evt", evt.target.value)
+        setEditData(evt.target.value)
+    }
+
+    const updateItem = () => {
+        console.log("update item", editData)
+        props.saveEditItem(editData)
     }
 
     const addNewItem = () =>{
         const id:number = Math.floor(Math.random()*1000)+3
-        props.postTodos({id:id, text: textData})
+        props.postTodos({id:id, text: textData, showEdit: false})
 
+    }
+
+    const close = () => {
+        console.log("CLOSE PRESSED")
+        setShowForm(false)
+        props.closePressed()
     }
     
     return(
         <div>
-            <Presentation textData={textData} data={todos} addItem={addItem} editItem={editItem} showForm={showForm} setText={setText} addNewItem={addNewItem}/>
+            <Presentation  editData={editData} closeF={close} textData={textData} updateItem={updateItem} data={todos} addItem={addItem} editItem={editItem} showForm={showForm} updateEditText={updateEditText} setText={setText} addNewItem={addNewItem}/>
         </div>
     )
 
@@ -65,5 +83,8 @@ const stateToProps = (state:any) =>{
 const mapDispatchToProps = {
     getTodos,
     postTodos,
+    showEditItem,
+    saveEditItem,
+    closePressed
 }
 export default connect(stateToProps, mapDispatchToProps)(AddCard);

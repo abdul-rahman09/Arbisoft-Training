@@ -1,7 +1,7 @@
 import{LOADING, TODO_REQ, TODO_REQ_SUCCESS, POST_TODO_REQ_RESET, POST_TODO_REQ, POST_TODO_REQ_SUCCESS,
     DOING_REQ, DOING_REQ_SUCCESS, POST_DOING_REQ_RESET, POST_DOING_REQ, POST_DOING_REQ_SUCCESS}from"./types";
-export const TODO_ITEMS_DATA = [{id:1,text:"ABC"}]
-export const DOING_ITEMS_DATA = [{id:4,text:"Working on App"}]
+export const TODO_ITEMS_DATA = [{id:1,text:"ABC", showEdit: false}]
+export const DOING_ITEMS_DATA = [{id:4,text:"Working on App", showEdit: false}]
 export function loadingPureFunction(){
     return {
         type:LOADING
@@ -113,5 +113,56 @@ export function postDOINGs(data:any){
             dispatch(postDOING_REQ_RESET())
         },
         100)
+    }
+}
+//showEditItem
+
+export function showEditItem_REQ_RESET(){
+    return {
+        type: "POST_DOING_REQ_RESET",
+    }
+}
+export function showEditItem(data:any){
+    return function(dispatch:any){
+        for(let i=0;i<TODO_ITEMS_DATA.length;i++){
+            if(TODO_ITEMS_DATA[i].id == data){
+                TODO_ITEMS_DATA[i]['showEdit'] = true
+            }
+            else{
+                TODO_ITEMS_DATA[i]['showEdit'] = false
+            }
+        }
+        dispatch(getTodos())
+        // dispatch(postDOING_REQ())
+        // setTimeout(()=>{
+        //     DOING_ITEMS_DATA.push(data)
+        //     dispatch(postDOING_REQ_SUCCESS(data))
+        //     dispatch(getDOINGs())
+        //     dispatch(postDOING_REQ_RESET())
+        // },
+        // 100)
+    }
+}
+//saveEditItem
+
+export function saveEditItem(data:any){
+    return function(dispatch:any){
+        for(let i=0;i<TODO_ITEMS_DATA.length;i++){
+            if(TODO_ITEMS_DATA[i].showEdit == true){
+                TODO_ITEMS_DATA[i]['text'] = data
+                TODO_ITEMS_DATA[i].showEdit = false
+            }
+        }
+        dispatch(getTodos())
+    }
+}
+export function closePressed(){
+    return function(dispatch:any){
+        for(let i=0;i<TODO_ITEMS_DATA.length;i++){
+            if(TODO_ITEMS_DATA[i].showEdit == true){
+                TODO_ITEMS_DATA[i].showEdit = false
+            }
+        }
+        dispatch(getTodos())
     }
 }
