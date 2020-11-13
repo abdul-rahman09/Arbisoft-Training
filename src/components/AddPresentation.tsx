@@ -26,7 +26,7 @@ function AddCard(props:any) {
             {props.data.map((item:any)=>{
                 return <Edit key={item.id} onClick={()=>props.editItem(item.id)}>{item.text}</Edit>
             })}
-            {props.showForm ?  <Form setText={props.setText}/>:  <Input onClick={()=>props.addItem()}>+ Add a card</Input>
+            {props.showForm ?  <Form setText={props.setText} addNewItem={props.addNewItem}/>:  <Input onClick={()=>props.addItem()}>+ Add a card</Input>
            
             }
         </div>

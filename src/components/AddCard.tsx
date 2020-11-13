@@ -29,11 +29,13 @@ function AddCard(props:any) {
         console.log(`set Text` )
     }
 
-
+    const addNewItem = () =>{
+        console.log(`addNewItem` )
+    }
     
     return(
         <div>
-            <Presentation data={todos} addItem={addItem} editItem={editItem} showForm={showForm} setText={setText}/>
+            <Presentation data={todos} addItem={addItem} editItem={editItem} showForm={showForm} setText={setText} addNewItem={addNewItem}/>
         </div>
     )
 

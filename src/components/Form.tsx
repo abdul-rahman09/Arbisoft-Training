@@ -26,9 +26,9 @@ const MyX = styled.span`
 function Form(props:any) {
     return(
         <div>
-            <MyInput/>
+            <MyInput onChange={props.setText}/>
 
-            <StyledButton className="btn btn-success">Add Card</StyledButton>
+            <StyledButton className="btn btn-success" onClick={props.addNewItem}>Add Card</StyledButton>
             <MyX>X</MyX>
             {/* <span>X</span> */}
         </div>
