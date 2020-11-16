@@ -1,28 +1,7 @@
 import React from 'react';
 import AddCard from "./AddCard"
-import styled from 'styled-components';
-import { Button } from "react-bootstrap"
+import {MyInput, MyX, StyledButton} from "../style"
 
-const StyledButton = styled(Button)`
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-`;
-
-
-const MyInput = styled.input`
-    width: 100%;
-    height: 60px;
-    border: none;
-    &:hover{
-        border: none;
-    }
-`;
-const MyX = styled.span`
-    cursor: pointer;
-`;
 function Form(props:any) {
     return(
         <div>
@@ -30,7 +9,6 @@ function Form(props:any) {
 
             <StyledButton className="btn btn-success" onClick={props.addNewItem}>Add Card</StyledButton>
             <MyX onClick={props.close}>X</MyX>
-            {/* <span>X</span> */}
         </div>
     )
 

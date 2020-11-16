@@ -5,7 +5,7 @@ const initialState={
     loading: false,
     success: false,
     error: false,
-    data: []
+    data: Array<TodoItem>()
 }
 
 
@@ -18,7 +18,7 @@ const reducer = (state = initialState, action:any) => {
       case TODO_REQ_SUCCESS:
         newState.loading = false;
         newState.success = true;
-        newState.data = Object.assign(TODO_ITEMS_DATA)
+        newState.data = [...TODO_ITEMS_DATA]
         break;
       case TODO_REQ_ERR:
         newState.loading = !state.loading;

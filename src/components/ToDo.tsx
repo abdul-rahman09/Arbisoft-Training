@@ -1,14 +1,7 @@
 import React from 'react';
 import AddCard from "./AddCard"
-import styled from 'styled-components';
+import {MyDiv} from "../style"
 
-const MyDiv = styled.div.attrs(props => ({
-}))`
-    background-color: papayawhip;
-    margin: 2px;
-    padding:10px;
-`;
-  
 function Todo(props:any) {
     return(
         <MyDiv>
