@@ -115,7 +115,6 @@ export function postDOINGs(data:any){
         100)
     }
 }
-//showEditItem
 
 export function showEditItem_REQ_RESET(){
     return {
@@ -133,17 +132,8 @@ export function showEditItem(data:any){
             }
         }
         dispatch(getTodos())
-        // dispatch(postDOING_REQ())
-        // setTimeout(()=>{
-        //     DOING_ITEMS_DATA.push(data)
-        //     dispatch(postDOING_REQ_SUCCESS(data))
-        //     dispatch(getDOINGs())
-        //     dispatch(postDOING_REQ_RESET())
-        // },
-        // 100)
     }
 }
-//saveEditItem
 
 export function saveEditItem(data:any){
     return function(dispatch:any){

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
 import {getTodos, postTodos, showEditItem, saveEditItem, closePressed} from "../redux/actions/index"
 import Presentation from "./AddPresentation";
-import {TodoItem} from "./models"
+// import {TodoItem} from "src/components/models"
 
 function AddCard(props:any) {
     const [todos, setTodos] = useState([]);
