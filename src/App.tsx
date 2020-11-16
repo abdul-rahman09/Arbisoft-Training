@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import {connect} from "react-redux";
 import Board from "./components/Board"
 
 function App(props:any) {
@@ -10,11 +9,4 @@ function App(props:any) {
     </div>
   );
 }
-
-const stateToProps = (state:any) =>{
-  return{
-  } 
-}
-const mapDispatchToProps = {
-}
-export default connect(stateToProps, mapDispatchToProps)(App);
+export default App;

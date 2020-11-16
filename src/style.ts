@@ -8,6 +8,7 @@ export const MyCustomParagraph = styled.p.attrs(props => ({
 }))`
     color: grey;
     cursor: pointer;
+    background-color: white;
     :hover{
         background-color: lightgray;
     };

@@ -1,7 +1,10 @@
 import{LOADING, TODO_REQ, TODO_REQ_SUCCESS, POST_TODO_REQ_RESET, POST_TODO_REQ, POST_TODO_REQ_SUCCESS,
     DOING_REQ, DOING_REQ_SUCCESS, POST_DOING_REQ_RESET, POST_DOING_REQ, POST_DOING_REQ_SUCCESS}from"./types";
-export const TODO_ITEMS_DATA = [{id:1,text:"ABC", showEdit: false}]
-export const DOING_ITEMS_DATA = [{id:4,text:"Working on App", showEdit: false}]
+import {TodoItem} from "../../components/models"
+let item1:TodoItem = {id:1,text:"ABC", showEdit: false}
+let item2:TodoItem = {id:4,text:"Working on App", showEdit: false}
+export const TODO_ITEMS_DATA:Array<TodoItem> = [item1]
+export const DOING_ITEMS_DATA:Array<TodoItem> = [item2]
 export function loadingPureFunction(){
     return {
         type:LOADING
