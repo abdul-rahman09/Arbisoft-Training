@@ -1,6 +1,6 @@
 import React from 'react';
-import AddCard from "./AddCard"
-import styled from 'styled-components';
+import {connect} from "react-redux";
+import {saveEditItem} from "../redux2/actions/index"
 import {MyInput, MyX, StyledButton, MyCustomParagraph} from "../style"
 
 
@@ -11,7 +11,7 @@ function Form(props: any) {
             {props.showEdit && (
                 <>
                     <MyInput onChange={props.setText} value={props.editData} />
-                    <StyledButton className="btn btn-success" onClick={props.updateItem}>Save</StyledButton>
+                    <StyledButton className="btn btn-success" onClick={(evt:any)=> props.saveEditItem(props.editData)}>Save</StyledButton>
                     <MyX onClick={props.close}>X</MyX>
                 </>
             )}
@@ -20,4 +20,12 @@ function Form(props: any) {
     )
 
 }
-export default Form;
+const stateToProps = (state:any) =>{
+    return{
+    } 
+  }
+  const mapDispatchToProps = {
+      saveEditItem,
+  }
+  export default connect(stateToProps, mapDispatchToProps)(Form);
+  

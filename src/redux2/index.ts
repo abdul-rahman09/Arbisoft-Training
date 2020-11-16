@@ -8,5 +8,5 @@ export default combineReducers({
     todos: TodoReducer,
     doing: Doing,
     postTodo: PostTodoReducer,
-    postDoing:postDoingReducer
+    postDoing:postDoingReducer,
 })

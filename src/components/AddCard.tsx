@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
-import {getTodos, postTodos, showEditItem, saveEditItem, closePressed} from "../redux/actions/index"
+import {getTodos, postTodos, showEditItem, saveEditItem, closePressed} from "../redux2/actions/index"
+// import {getTodos, postTodos, showEditItem, saveEditItem, closePressed} from "redux_path/actions/index"
+
 import Presentation from "./AddPresentation";
 // import {TodoItem} from "src/components/models"
 
@@ -12,8 +14,8 @@ function AddCard(props:any) {
 
     useEffect(()=>{
         props.getTodos()
-        props.postTodos({id:2, text: "Typescript", showEdit: false})
-        props.postTodos({id:3, text: "Styled Component", showEdit: false})
+        props.postTodos("Typescript")
+        props.postTodos("Styled Component")
     }, [])
 
     useEffect(()=>{
@@ -35,7 +37,6 @@ function AddCard(props:any) {
 
     }
     const editItem = (item: any) =>{
-        // console.log(`EDIT ITEM NUMBER ${id}`)
         props.showEditItem(item.id)
         setEditData(item.text)
     }
@@ -45,30 +46,28 @@ function AddCard(props:any) {
     }
 
     const updateEditText = (evt:any)=> {
-        console.log("evt", evt.target.value)
         setEditData(evt.target.value)
     }
 
-    const updateItem = () => {
-        console.log("update item", editData)
-        props.saveEditItem(editData)
-    }
+    // const updateItem = () => {
+    //     console.log("update item", editData)
+    //     props.saveEditItem(editData)
+    // }
 
-    const addNewItem = () =>{
-        const id:number = Math.floor(Math.random()*1000)+3
-        props.postTodos({id:id, text: textData, showEdit: false})
+    // const addNewItem = () =>{
+    //     const id:number = Math.floor(Math.random()*1000)+3
+    //     props.postTodos({id:id, text: textData, showEdit: false})
 
-    }
+    // }
 
     const close = () => {
-        console.log("CLOSE PRESSED")
         setShowForm(false)
         props.closePressed()
     }
     
     return(
         <div>
-            <Presentation  editData={editData} closeF={close} textData={textData} updateItem={updateItem} data={todos} addItem={addItem} editItem={editItem} showForm={showForm} updateEditText={updateEditText} setText={setText} addNewItem={addNewItem}/>
+            <Presentation  editData={editData} closeF={close} textData={textData} data={todos} addItem={addItem} editItem={editItem} showForm={showForm} updateEditText={updateEditText} setText={setText}/>
         </div>
     )
 

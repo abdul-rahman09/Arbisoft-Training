@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
-import {getDOINGs, postDOINGs} from "../redux/actions/index"
+import {getDOINGs, postDOINGs} from "../redux2/actions/index"
 import Presentation from "./AddPresentation";
 
 function AddCard(props:any) {

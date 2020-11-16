@@ -1,16 +1,28 @@
 import React from 'react';
-import AddCard from "./AddCard"
+import {connect} from "react-redux"
 import {MyInput, MyX, StyledButton} from "../style"
+import {postTodos} from "../redux2/actions/index"
 
 function Form(props:any) {
     return(
         <div>
             <MyInput onChange={props.setText} value={props.textData}/>
 
-            <StyledButton className="btn btn-success" onClick={props.addNewItem}>Add Card</StyledButton>
+            <StyledButton className="btn btn-success" onClick={()=> props.postTodos(props.textData)}>Add Card</StyledButton>
             <MyX onClick={props.close}>X</MyX>
         </div>
     )
 
 }
-export default Form;
+
+
+
+const stateToProps = (state:any) =>{
+    return{
+    } 
+  }
+  const mapDispatchToProps = {
+      postTodos
+      
+  }
+  export default connect(stateToProps, mapDispatchToProps)(Form);

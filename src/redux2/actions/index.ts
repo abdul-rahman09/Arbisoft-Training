@@ -56,11 +56,17 @@ export function postTODO_REQ_RESET(){
         type:POST_TODO_REQ_RESET,
     }
 }
-export function postTodos(data:any){
+export function postTodos(data:string){
+    const item = {
+        id:Math.floor(Math.random()*1000)+3, 
+        text: data, 
+        showEdit: false
+    }
+
     return function(dispatch:any){
         dispatch(postTODO_REQ())
         setTimeout(()=>{
-            TODO_ITEMS_DATA.push(data)
+            TODO_ITEMS_DATA.push(item)
             dispatch(postTODO_REQ_SUCCESS(data))
             dispatch(getTodos())
             dispatch(postTODO_REQ_RESET())
@@ -139,6 +145,7 @@ export function showEditItem(data:any){
 }
 
 export function saveEditItem(data:any){
+    console.log("Data", data)
     return function(dispatch:any){
         for(let i=0;i<TODO_ITEMS_DATA.length;i++){
             if(TODO_ITEMS_DATA[i].showEdit == true){
