@@ -1,12 +1,12 @@
 import React from 'react';
-import AddCard from "components/AddCard"
+import AddCardContainer from "components/AddCardContainer"
 import {MyDiv} from "style"
 
 function Todo() {
     return(
         <MyDiv>
             <h6>Todo</h6>
-            <AddCard/>
+            <AddCardContainer/>
         </MyDiv>
     )
 

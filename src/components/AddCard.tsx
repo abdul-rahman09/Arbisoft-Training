@@ -1,58 +1,19 @@
 import React, {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux'
-import {getTodos, postTodos, showEditItem, closePressed} from "redux2/actions/index"
-import { RootState} from "redux2/index"
-// import {getTodos, postTodos, showEditItem, saveEditItem, closePressed} from "redux_path/actions/index"
-
 import Presentation from "./AddPresentation";
-// import {TodoItem} from "src/components/models"
+import {TodoItem} from "components/models"
 
-function AddCard() {
-    const dispatch = useDispatch()
-    const todos = useSelector((state: RootState)  => state.todos)
-    const newItem = useSelector((state: RootState)  => state.postTodo)
-    const [showForm, setShowForm] = useState(false);
-    const [textData, setTextData] = useState("");
-    const [editData, setEditData] = useState("");
+function AddCard(props: {data: Array<TodoItem>, newItem: any, getTodos: Function, postTodos: Function, showEditItem: Function, closePressed: Function, setShowForm: Function, showForm: boolean,
+                        setTextData: Function, textData:string, editData:string, setEditData:Function, editItem:Function}) {
 
     useEffect(()=>{
-        dispatch(getTodos())
-        dispatch(postTodos("Typescript"))
-        dispatch(postTodos("Styled Component"))
+        props.getTodos()
+        props.postTodos("Typescript")
+        props.postTodos("Styled Component")
     }, [])
 
-    useEffect(()=>{
-        if(newItem.success){
-            setTextData("")
-            setShowForm(false)
-        }
-    }, [newItem])
-
-    const addItem = () =>{
-        setShowForm(true)
-
-    }
-    const editItem = (item: any) =>{
-        dispatch(showEditItem(item.id))
-        setEditData(item.text)
-    }
-
-    const setText = (evt:any) =>{
-        setTextData(evt.target.value)
-    }
-
-    const updateEditText = (evt:any)=> {
-        setEditData(evt.target.value)
-    }
-
-    const close = () => {
-        setShowForm(false)
-        dispatch(closePressed())
-    }
-    
     return(
         <div>
-            <Presentation  editData={editData} closeF={close} textData={textData} data={todos.data} addItem={addItem} editItem={editItem} showForm={showForm} updateEditText={updateEditText} setText={setText}/>
+            <Presentation  editData={props.editData} closeF={props.closePressed} textData={props.textData} data={props.data} addItem={()=> props.setShowForm(true)} editItem={(item)=>props.editItem(item)} showForm={props.showForm} updateEditText={(evt:any)=>props.setEditData(evt.target.value)} setText={(evt:any)=> props.setTextData(evt.target.value)}/>
         </div>
     )
 

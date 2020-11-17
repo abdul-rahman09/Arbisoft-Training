@@ -1,5 +1,6 @@
 import{LOADING, TODO_REQ, TODO_REQ_SUCCESS, POST_TODO_REQ_RESET, POST_TODO_REQ, POST_TODO_REQ_SUCCESS,
-    DOING_REQ, DOING_REQ_SUCCESS, POST_DOING_REQ_RESET, POST_DOING_REQ, POST_DOING_REQ_SUCCESS}from"./types";
+    DOING_REQ, DOING_REQ_SUCCESS, POST_DOING_REQ_RESET, POST_DOING_REQ, POST_DOING_REQ_SUCCESS, SHOW_FORM_FALSE, SHOW_FORM_TRUE,
+TEXT_DATA_CHANGE, TEXT_DATA_RESET, EDIT_DATA_CHANGE, EDIT_DATA_RESET}from"./types";
 import {TodoItem} from "../../components/models"
 let item1:TodoItem = {id:1,text:"ABC", showEdit: false}
 let item2:TodoItem = {id:4,text:"Working on App", showEdit: false}
@@ -70,6 +71,9 @@ export function postTodos(data:string){
             dispatch(postTODO_REQ_SUCCESS(data))
             dispatch(getTodos())
             dispatch(postTODO_REQ_RESET())
+            dispatch(setShowForm(false))
+            dispatch(setEditData(""))
+            dispatch(setTextData(""))
         },
         100)
     }
@@ -120,6 +124,8 @@ export function postDOINGs(data:any){
             dispatch(postDOING_REQ_SUCCESS(data))
             dispatch(getDOINGs())
             dispatch(postDOING_REQ_RESET())
+            dispatch(setEditData(""))
+            dispatch(setTextData(""))
         },
         100)
     }
@@ -153,16 +159,52 @@ export function saveEditItem(data:any){
                 TODO_ITEMS_DATA[i].showEdit = false
             }
         }
+        dispatch(setEditData(""))
+        dispatch(setTextData(""))
         dispatch(getTodos())
     }
 }
 export function closePressed(){
     return function(dispatch:any){
+        dispatch(setShowForm(false))
         for(let i=0;i<TODO_ITEMS_DATA.length;i++){
             if(TODO_ITEMS_DATA[i].showEdit == true){
                 TODO_ITEMS_DATA[i].showEdit = false
             }
         }
+        dispatch(setEditData(""))
+        dispatch(setTextData(""))
         dispatch(getTodos())
+    }
+}
+export function setShowForm(isShow){
+    return function(dispatch:any){
+        if(isShow){
+            dispatch({type: SHOW_FORM_TRUE})
+        }
+        else{
+            dispatch({type: SHOW_FORM_FALSE})
+        }
+    }
+}
+export function setTextData(data:string){
+    return function(dispatch:any){
+        dispatch({type: TEXT_DATA_CHANGE, payload: data})
+    }
+}
+export function setTextDataReset(){
+    return function(dispatch:any){
+        dispatch({type: TEXT_DATA_RESET})
+    }
+}
+export function setEditData(data:string){
+    return function(dispatch:any){
+        dispatch({type: EDIT_DATA_CHANGE, payload: data})
+    }
+}
+export function editItem(item:any){
+    return function(dispatch:any){
+        dispatch(showEditItem(item.id))
+        dispatch(setEditData(item.text))
     }
 }
