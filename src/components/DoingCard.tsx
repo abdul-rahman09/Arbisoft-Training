@@ -1,30 +1,28 @@
 import React, {useState, useEffect} from 'react';
-import {connect} from "react-redux";
+import {useSelector, useDispatch} from 'react-redux'
 import {getDOINGs, postDOINGs} from "../redux2/actions/index"
 import Presentation from "./AddPresentation";
+import { RootState} from "../redux2/index"
 
 function AddCard(props:any) {
-    const [todos, setTodos] = useState([]);
+    const dispatch = useDispatch()
+    const todos = useSelector((state: RootState)  => state.doing)
+    const newItem = useSelector((state: RootState)  => state.postDoing)
+    const [editData, setEditData] = useState("");
     const [showForm, setShowForm] = useState(false);
     const [textData, setTextData] = useState("");
 
     useEffect(()=>{
-        props.getDOINGs()
+        dispatch(getDOINGs())
     }, [])
 
-    useEffect(()=>{
-        if(props.todos.success){
-            setTodos(props.todos.data)
-        }
-    }, [props.todos])
-
 
     useEffect(()=>{
-        if(props.newItem.success){
+        if(newItem.success){
             setTextData("")
             setShowForm(false)
         }
-    }, [props.newItem])
+    }, [newItem])
 
     const addItem = () =>{
         setShowForm(true)
@@ -39,28 +37,19 @@ function AddCard(props:any) {
 
     }
 
-    const addNewItem = () =>{
-        const id:number = Math.floor(Math.random()*1000)+3
-        props.postDOINGs({id:id, text: textData})
-
+    const close = () => {
+        setShowForm(false)
     }
-    
+    const updateEditText = (evt:any)=> {
+        setEditData(evt.target.value)
+    }
+
     return(
         <div>
-            <Presentation textData={textData} data={todos} addItem={addItem} editItem={editItem} showForm={showForm} setText={setText} addNewItem={addNewItem}/>
+            <Presentation editData={editData} updateEditText={updateEditText} closeF={close} textData={textData} data={todos.data} addItem={addItem} editItem={editItem} showForm={showForm} setText={setText}/>
         </div>
     )
 
 }
 
-const stateToProps = (state:any) =>{
-  return{
-    todos: state.doing,
-    newItem: state.postDoing
-  } 
-}
-const mapDispatchToProps = {
-    getDOINGs,
-    postDOINGs,
-}
-export default connect(stateToProps, mapDispatchToProps)(AddCard);
+export default AddCard;

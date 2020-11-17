@@ -2,7 +2,7 @@ import React from 'react';
 import Todo from "./ToDo"
 import Doing from "./Doing"
   
-function Board(props:any) {
+function Board() {
     return(
         <>
         <h1>Board</h1>
