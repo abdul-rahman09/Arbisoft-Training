@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from "react-redux"
 import Form from "./Form"
 import Edit from "./EditForm"
 import {MyCustomParagraph} from "../style"
@@ -20,12 +19,5 @@ function Presentation(props:any) {
 
 }
 
-const stateToProps = (state:any) =>{
-    return{
-    } 
-  }
-  const mapDispatchToProps = {
-  }
-  export default connect(stateToProps, mapDispatchToProps)(Presentation);
-  
+export default Presentation;
   

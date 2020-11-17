@@ -4,9 +4,12 @@ import Doing from "./DoingReducer"
 import PostTodoReducer from "./postTodoReducer"
 import postDoingReducer from "./postDoingReducer"
 
-export default combineReducers({
+const rootReducer =  combineReducers({
     todos: TodoReducer,
     doing: Doing,
     postTodo: PostTodoReducer,
     postDoing:postDoingReducer,
 })
+
+export type RootState = ReturnType<typeof rootReducer>
+export default rootReducer;
