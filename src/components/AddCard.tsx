@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import {connect} from "react-redux";
-import {getTodos, postTodos, showEditItem, saveEditItem, closePressed} from "../redux2/actions/index"
+import {getTodos, postTodos, showEditItem, closePressed} from "../redux2/actions/index"
 import { RootState} from "../redux2/index"
 // import {getTodos, postTodos, showEditItem, saveEditItem, closePressed} from "redux_path/actions/index"
 
 import Presentation from "./AddPresentation";
 // import {TodoItem} from "src/components/models"
 
-function AddCard(props:any) {
+function AddCard() {
     const dispatch = useDispatch()
     const todos = useSelector((state: RootState)  => state.todos)
     const newItem = useSelector((state: RootState)  => state.postTodo)
