@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import {getTodos, postTodos, showEditItem, closePressed} from "../redux2/actions/index"
-import { RootState} from "../redux2/index"
+import {getTodos, postTodos, showEditItem, closePressed} from "redux2/actions/index"
+import { RootState} from "redux2/index"
 // import {getTodos, postTodos, showEditItem, saveEditItem, closePressed} from "redux_path/actions/index"
 
 import Presentation from "./AddPresentation";

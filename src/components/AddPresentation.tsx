@@ -1,8 +1,8 @@
 import React from 'react';
-import Form from "./Form"
-import Edit from "./EditForm"
-import {MyCustomParagraph} from "../style"
-import {TodoItem} from "./models"
+import Form from "components/Form"
+import Edit from "components/EditForm"
+import {MyCustomParagraph} from "style"
+import {TodoItem} from "components/models"
 
   
 function Presentation(props:{showForm: boolean, data:Array<TodoItem>, closeF: Function, updateEditText: Function, textData: string, setText: Function, editData: string, addItem:Function, editItem: Function}) {

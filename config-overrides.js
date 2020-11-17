@@ -5,6 +5,7 @@ module.exports = function override(config) {
     alias: {
       ...config.alias,
       'components': path.resolve(__dirname, 'src/components'),
+      'redux2': path.resolve(__dirname, 'src/redux2'),
     },
   };
 return config;

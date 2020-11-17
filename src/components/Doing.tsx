@@ -1,5 +1,5 @@
 import React from 'react';
-import DoingCard from "./DoingCard"
+import DoingCard from "components/DoingCard"
 import styled from 'styled-components';
 
 const MyDiv = styled.div`

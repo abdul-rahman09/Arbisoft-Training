@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import {getDOINGs, postDOINGs} from "../redux2/actions/index"
-import Presentation from "./AddPresentation";
-import { RootState} from "../redux2/index"
+import {getDOINGs, postDOINGs} from "redux2/actions/index"
+import Presentation from "components/AddPresentation";
+import { RootState} from "redux2/index"
 
 function AddCard(props:any) {
     const dispatch = useDispatch()

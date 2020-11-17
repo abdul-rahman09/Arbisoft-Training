@@ -1,6 +1,6 @@
 import React from 'react';
-import AddCard from "./AddCard"
-import {MyDiv} from "../style"
+import AddCard from "components/AddCard"
+import {MyDiv} from "style"
 
 function Todo() {
     return(

@@ -1,8 +1,7 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {saveEditItem} from "../redux2/actions/index"
-import {MyInput, MyX, StyledButton, MyCustomParagraph} from "../style"
-import {TodoItem} from "./models"
+import {saveEditItem} from "redux2/actions/index"
+import {MyInput, MyX, StyledButton, MyCustomParagraph} from "style"
 
 
 function Form(props: {data: string, setText: Function, editData: string, showEdit: boolean, onTouch: any, close: Function}) {

@@ -1,6 +1,6 @@
 import React from 'react';
-import Todo from "./ToDo"
-import Doing from "./Doing"
+import Todo from "components/ToDo"
+import Doing from "components/Doing"
   
 function Board() {
     return(
