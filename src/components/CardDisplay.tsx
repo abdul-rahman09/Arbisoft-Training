@@ -38,4 +38,3 @@ function CardDisplay(props: CardInterface) {
 }
 
 export default CardDisplay;
-  

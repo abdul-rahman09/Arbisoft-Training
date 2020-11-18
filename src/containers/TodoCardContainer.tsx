@@ -27,4 +27,3 @@ const stateToProps = (state:RootState) =>{
       saveEditItem: saveEditItemTodo
   }
   export default connect(stateToProps, mapDispatchToProps)(Card);
-  
