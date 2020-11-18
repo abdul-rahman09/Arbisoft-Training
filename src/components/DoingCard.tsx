@@ -46,7 +46,7 @@ function AddCard(props:any) {
 
     return(
         <div>
-            <Presentation editData={editData} updateEditText={updateEditText} closeF={close} textData={textData} data={todos.data} addItem={addItem} editItem={editItem} showForm={showForm} setText={setText}/>
+            <Presentation post={()=> console.log("post")} editData={editData} updateEditText={updateEditText} closeF={close} textData={textData} data={todos.data} addItem={addItem} editItem={(item)=> console.log(item)} showForm={showForm} setText={setText}/>
         </div>
     )
 

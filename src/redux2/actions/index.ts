@@ -151,7 +151,6 @@ export function showEditItem(data:any){
 }
 
 export function saveEditItem(data:any){
-    console.log("Data", data)
     return function(dispatch:any){
         for(let i=0;i<TODO_ITEMS_DATA.length;i++){
             if(TODO_ITEMS_DATA[i].showEdit == true){
