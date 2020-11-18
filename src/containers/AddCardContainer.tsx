@@ -25,3 +25,4 @@ const stateToProps = (state:RootState) =>{
       editItem
   }
   export default connect(stateToProps, mapDispatchToProps)(AddCard);
+  

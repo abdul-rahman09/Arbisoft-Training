@@ -22,4 +22,3 @@ function Form(props: {data: string, setText: Function, editData: string, showEdi
 
 }
 export default Form;
-  
