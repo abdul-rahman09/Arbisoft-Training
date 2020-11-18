@@ -1,5 +1,5 @@
-import {DOING_REQ, DOING_REQ_SUCCESS, DOING_REQ_ERR} from "store/types"
-import { DOING_ITEMS_DATA} from "store/actions/index"
+import {DONE_REQ, DONE_REQ_SUCCESS, DONE_REQ_ERR} from "store/types"
+import { DONE_ITEMS_DATA} from "store/actions/index"
 import {TodoItem} from "components/models"
 
 const initialState = {
@@ -13,15 +13,15 @@ const initialState = {
 const reducer = (state = initialState, action:any) => {
     const newState = { ...state };
     switch (action.type) {
-      case DOING_REQ:
+      case DONE_REQ:
         newState.loading = true;
         break;
-      case DOING_REQ_SUCCESS:
+      case DONE_REQ_SUCCESS:
         newState.loading = false;
         newState.success = true;
-        newState.data = [...DOING_ITEMS_DATA]
+        newState.data = [...DONE_ITEMS_DATA]
         break;
-      case DOING_REQ_ERR:
+      case DONE_REQ_ERR:
         newState.loading = !state.loading;
         newState.error = true
     }

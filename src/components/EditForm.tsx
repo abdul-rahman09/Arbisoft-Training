@@ -1,27 +1,25 @@
 import React from 'react';
-import {useDispatch} from "react-redux";
-import {saveEditItem} from "store/actions/index"
-import {MyInput, MyX, StyledButton, MyCustomParagraph} from "style"
+import {InputWrapper, CrossButtonWrapper, StyledButton, FieldWrapper} from "style"
 
 interface FormInterface {
     data: string, 
     setText: Function, 
     editData: string, 
     showEdit: boolean, 
-    onTouch: any, 
+    onTouch: any,
+    saveEditItem: Function, 
     close: Function
 }
 
 function Form(props: FormInterface) {
-    const dispatch = useDispatch()
     return (
         <div>
-            {!props.showEdit && <MyCustomParagraph onClick={props.onTouch}>{props.data}</MyCustomParagraph>}
+            {!props.showEdit && <FieldWrapper onClick={props.onTouch}>{props.data}</FieldWrapper>}
             {props.showEdit && (
                 <>
-                    <MyInput onChange={(evt)=> props.setText(evt)} value={props.editData} />
-                    <StyledButton className="btn btn-success" onClick={(evt:any)=> dispatch(saveEditItem(props.editData))}>Save</StyledButton>
-                    <MyX onClick={(evt) => props.close(evt)}>X</MyX>
+                    <InputWrapper onChange={(evt)=> props.setText(evt)} value={props.editData} />
+                    <StyledButton className="btn btn-success" onClick={(evt:any)=> props.saveEditItem(props.editData)}>Save</StyledButton>
+                    <CrossButtonWrapper onClick={(evt) => props.close(evt)}>X</CrossButtonWrapper>
                 </>
             )}
 

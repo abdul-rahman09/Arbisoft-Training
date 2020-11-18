@@ -4,8 +4,7 @@ import { Button } from "react-bootstrap"
 export const MyH1 = styled.h1`
   color: red;
 `;
-export const MyCustomParagraph = styled.p.attrs(props => ({
-}))`
+export const FieldWrapper = styled.p`
     color: grey;
     cursor: pointer;
     background-color: white;
@@ -13,7 +12,7 @@ export const MyCustomParagraph = styled.p.attrs(props => ({
         background-color: lightgray;
     };
 `;
-export const MyDiv = styled.div`
+export const CardWrapper = styled.div`
     background-color: papayawhip;
     margin: 2px;
     padding:10px;
@@ -26,8 +25,7 @@ export const StyledButton = styled(Button)`
   border-radius: 3px;
 `;
 
-
-export const MyInput = styled.input`
+export const InputWrapper = styled.input`
     width: 100%;
     height: 60px;
     border: none;
@@ -35,6 +33,6 @@ export const MyInput = styled.input`
         border: none;
     }
 `;
-export const MyX = styled.span`
+export const CrossButtonWrapper = styled.span`
     cursor: pointer;
 `;

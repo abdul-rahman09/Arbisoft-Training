@@ -1,6 +1,6 @@
 import React from 'react';
-import Todo from "components/ToDo"
-import Doing from "components/Doing"
+import AddCardContainer from "containers/TodoCardContainer"
+import DoneCardContainer from "containers/DoneCardContainer"
   
 function Board() {
     return(
@@ -8,10 +8,10 @@ function Board() {
         <h1>Board</h1>
         <div className="row container">
             <div className="col-lg-3 col-sm-4">
-                <Todo/>
+                <AddCardContainer/>
             </div>
             <div className="col-lg-3 col-sm-4">
-                <Doing/>
+                <DoneCardContainer/>
             </div>
         </div>
         </>

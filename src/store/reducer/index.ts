@@ -1,20 +1,26 @@
 import { combineReducers } from 'redux'
 import TodoReducer from "store/reducer/TodoReducer"
-import Doing from "store/reducer/DoingReducer"
+import Done from "store/reducer/DoneReducer"
 import PostTodoReducer from "store/reducer/postTodoReducer"
-import postDoingReducer from "store/reducer/postDoingReducer"
+import postDoneReducer from "store/reducer/postDoneReducer"
 import showFormReducer from "store/reducer/showFormReducer"
 import textData from "store/reducer/textDataReducer"
 import editData from "store/reducer/editDataReducer"
+import showFormDoneReducer from "store/reducer/showFormDoneReducer"
+import textDataDone from "store/reducer/textDataDoneReducer"
+import editDataDone from "store/reducer/editDataDoneReducer"
 
 const rootReducer =  combineReducers({
     todos: TodoReducer,
-    doing: Doing,
+    done: Done,
     postTodo: PostTodoReducer,
-    postDoing:postDoingReducer,
+    postDoing:postDoneReducer,
     showForm: showFormReducer,
     textData,
-    editData
+    editData,
+    showFormDone: showFormDoneReducer,
+    textDataDone,
+    editDataDone
 })
 
 export type RootState = ReturnType<typeof rootReducer>

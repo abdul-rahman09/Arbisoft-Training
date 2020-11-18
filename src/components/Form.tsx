@@ -1,5 +1,5 @@
 import React from 'react';
-import {MyInput, MyX, StyledButton} from "style"
+import {InputWrapper, CrossButtonWrapper, StyledButton} from "style"
 
 interface FormInterface {
     setText: any, 
@@ -11,10 +11,10 @@ function Form(props:FormInterface) {
 
     return(
         <div>
-            <MyInput onChange={props.setText} value={props.textData}/>
+            <InputWrapper onChange={props.setText} value={props.textData}/>
 
             <StyledButton className="btn btn-success" onClick={()=> props.post(props.textData)}>Add Card</StyledButton>
-            <MyX onClick={props.close}>X</MyX>
+            <CrossButtonWrapper onClick={props.close}>X</CrossButtonWrapper>
         </div>
     )
 
