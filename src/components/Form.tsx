@@ -1,7 +1,13 @@
 import React from 'react';
 import {MyInput, MyX, StyledButton} from "style"
 
-function Form(props:{setText: any, textData:string, close: any, post: any}) {
+interface FormInterface {
+    setText: any, 
+    textData:string, 
+    close: any, 
+    post: any
+}
+function Form(props:FormInterface) {
 
     return(
         <div>

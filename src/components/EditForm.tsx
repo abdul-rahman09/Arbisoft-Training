@@ -3,8 +3,16 @@ import {useDispatch} from "react-redux";
 import {saveEditItem} from "store/actions/index"
 import {MyInput, MyX, StyledButton, MyCustomParagraph} from "style"
 
+interface FormInterface {
+    data: string, 
+    setText: Function, 
+    editData: string, 
+    showEdit: boolean, 
+    onTouch: any, 
+    close: Function
+}
 
-function Form(props: {data: string, setText: Function, editData: string, showEdit: boolean, onTouch: any, close: Function}) {
+function Form(props: FormInterface) {
     const dispatch = useDispatch()
     return (
         <div>

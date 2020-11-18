@@ -1,11 +1,23 @@
-import React from 'react';
+import React, {FC} from 'react';
 import Form from "components/Form"
 import Edit from "components/EditForm"
 import {MyCustomParagraph} from "style"
 import {TodoItem} from "components/models"
 
+interface CardInterface {
+    showForm: boolean, 
+    data:Array<TodoItem>, 
+    closeF: Function, 
+    updateEditText: Function, 
+    textData: string, 
+    setText: Function, 
+    editData: string, 
+    addItem:Function, 
+    editItem: Function, 
+    post: any
+}
   
-function Presentation(props:{showForm: boolean, data:Array<TodoItem>, closeF: Function, updateEditText: Function, textData: string, setText: Function, editData: string, addItem:Function, editItem: Function, post: any}) {
+function Presentation(props: CardInterface) {
     return(
         <div>
             {props.data.map((item:TodoItem)=>{

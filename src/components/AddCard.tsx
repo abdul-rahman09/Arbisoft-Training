@@ -1,9 +1,25 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, FC} from 'react';
 import Presentation from "./AddPresentation";
 import {TodoItem} from "components/models"
 
-function AddCard(props: {data: Array<TodoItem>, newItem: any, getTodos: Function, postTodos: any, showEditItem: Function, closePressed: Function, setShowForm: Function, showForm: boolean,
-                        setTextData: Function, textData:string, editData:string, setEditData:Function, editItem:any}) {
+interface CardInterface {
+    data: Array<TodoItem>, 
+    newItem: any, 
+    getTodos: Function, 
+    postTodos: any, 
+    showEditItem: Function, 
+    closePressed: Function, 
+    setShowForm: Function, 
+    showForm: boolean,
+    setTextData: Function, 
+    textData:string, 
+    editData:string, 
+    setEditData:Function, 
+    editItem:any
+}
+
+
+const Card:FC<CardInterface> = (props: CardInterface) => {
 
     useEffect(()=>{
         props.getTodos()
@@ -18,4 +34,4 @@ function AddCard(props: {data: Array<TodoItem>, newItem: any, getTodos: Function
     )
 
 }
-export default AddCard;
+export default Card;
