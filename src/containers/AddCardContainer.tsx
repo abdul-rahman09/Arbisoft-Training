@@ -1,6 +1,6 @@
 import {connect} from "react-redux"
-import {getTodos, postTodos, showEditItem, closePressed, setShowForm, setTextData, setEditData, editItem} from "redux2/actions/index"
-import { RootState} from "redux2/index"
+import {getTodos, postTodos, showEditItem, closePressed, setShowForm, setTextData, setEditData, editItem} from "store/actions/index"
+import { RootState} from "store/reducer/index"
 import AddCard from "components/AddCard"
 
 

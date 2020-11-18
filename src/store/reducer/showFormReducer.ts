@@ -1,4 +1,4 @@
-import {SHOW_FORM_FALSE, SHOW_FORM_TRUE} from "./actions/types"
+import {SHOW_FORM_FALSE, SHOW_FORM_TRUE} from "store/types"
 const initialState:boolean = false
 
 

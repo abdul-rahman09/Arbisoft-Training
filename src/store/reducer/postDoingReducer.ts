@@ -1,4 +1,4 @@
-import {POST_DOING_REQ, POST_DOING_REQ_SUCCESS, POST_DOING_REQ_ERR, POST_DOING_REQ_RESET} from "./actions/types"
+import {POST_DOING_REQ, POST_DOING_REQ_SUCCESS, POST_DOING_REQ_ERR, POST_DOING_REQ_RESET} from "store/types"
 const initialState={
     loading: false,
     success: false,

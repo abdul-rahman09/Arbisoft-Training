@@ -1,5 +1,5 @@
 import React from 'react';
-import AddCardContainer from "components/AddCardContainer"
+import AddCardContainer from "containers/AddCardContainer"
 import {MyDiv} from "style"
 
 function Todo() {

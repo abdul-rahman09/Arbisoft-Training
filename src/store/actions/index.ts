@@ -1,6 +1,6 @@
 import{LOADING, TODO_REQ, TODO_REQ_SUCCESS, POST_TODO_REQ_RESET, POST_TODO_REQ, POST_TODO_REQ_SUCCESS,
     DOING_REQ, DOING_REQ_SUCCESS, POST_DOING_REQ_RESET, POST_DOING_REQ, POST_DOING_REQ_SUCCESS, SHOW_FORM_FALSE, SHOW_FORM_TRUE,
-TEXT_DATA_CHANGE, TEXT_DATA_RESET, EDIT_DATA_CHANGE, EDIT_DATA_RESET}from"./types";
+TEXT_DATA_CHANGE, TEXT_DATA_RESET, EDIT_DATA_CHANGE, EDIT_DATA_RESET} from "store/types";
 import {TodoItem} from "../../components/models"
 let item1:TodoItem = {id:1,text:"ABC", showEdit: false}
 let item2:TodoItem = {id:4,text:"Working on App", showEdit: false}

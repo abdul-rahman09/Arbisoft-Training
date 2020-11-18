@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {saveEditItem} from "redux2/actions/index"
+import {saveEditItem} from "store/actions/index"
 import {MyInput, MyX, StyledButton, MyCustomParagraph} from "style"
 
 

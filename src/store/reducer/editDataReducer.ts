@@ -1,4 +1,4 @@
-import {EDIT_DATA_RESET, EDIT_DATA_CHANGE} from "./actions/types"
+import {EDIT_DATA_RESET, EDIT_DATA_CHANGE} from "store/types"
 const initialState:string = ""
 
 
