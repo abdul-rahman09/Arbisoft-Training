@@ -1,28 +1,21 @@
 import {connect} from "react-redux"
-import {getTodos, postTodos, showEditItemTodo, closePressedTodo, setShowFormTodo, setTextDataTodo, setEditDataTodo, editItemTodo, saveEditItemTodo} from "store/actions/index"
+import {getTodos, postTodos, closePressedTodo, editItemTodo, saveEditItemTodo} from "store/actions/index"
 import { RootState} from "store/reducer/index"
+import { TODO_STATUS} from "components/models"
 import Card from "components/Card"
 
 
 const stateToProps = (state:RootState) =>{
     return{
       title: "Todo",
-      data: state.todos.data,
-      newItem: state.postTodo,
-      showForm: state.showForm,
-      textData: state.textData,
-      editData: state.editData
+      todos: state.todos.data.filter(item => item.state == TODO_STATUS.PENDING),
 
     } 
   }
   const mapDispatchToProps = {
       getData: getTodos,
       postData: postTodos,
-      showEditItem: showEditItemTodo,
       closePressed: closePressedTodo,
-      setShowForm: setShowFormTodo,
-      setTextData: setTextDataTodo,
-      setEditData:  setEditDataTodo,
       editItem: editItemTodo,
       saveEditItem: saveEditItemTodo
   }

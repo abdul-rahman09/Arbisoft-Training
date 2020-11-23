@@ -1,5 +1,6 @@
 import {connect} from "react-redux"
-import {getDone, postDone, showEditItemDone, closePressedDone, setShowFormDone, setTextDataDone, setEditDataDone, editItemDone, saveEditItemDone} from "store/actions/index"
+import {getTodos, postDone, closePressedTodo, editItemTodo, saveEditItemTodo} from "store/actions/index"
+import { TODO_STATUS} from "components/models"
 import { RootState} from "store/reducer/index"
 import Card from "components/Card"
 
@@ -7,23 +8,14 @@ import Card from "components/Card"
 const stateToProps = (state:RootState) =>{
     return{
       title: "Done",
-      data: state.done.data,
-      newItem: state.postTodo,
-      showForm: state.showFormDone,
-      textData: state.textDataDone,
-      editData: state.editDataDone
-
+      todos: state.todos.data.filter(item => item.state == TODO_STATUS.DONE),
     } 
   }
   const mapDispatchToProps = {
-      getData: getDone,
+      getData: getTodos,
       postData: postDone,
-      showEditItem: showEditItemDone,
-      closePressed: closePressedDone,
-      setShowForm: setShowFormDone,
-      setTextData: setTextDataDone,
-      setEditData: setEditDataDone,
-      editItem: editItemDone,
-      saveEditItem: saveEditItemDone
+      closePressed: closePressedTodo,
+      editItem: editItemTodo,
+      saveEditItem: saveEditItemTodo
   }
   export default connect(stateToProps, mapDispatchToProps)(Card);
