@@ -1,12 +1,12 @@
-import React, {FC} from 'react';
-import './App.css';
-import Board from "./components/Board"
+import React, { FC } from "react";
+import "./App.css";
+import Board from "./components/Board";
 
-const App:FC = () => {
+const App: FC = () => {
   return (
     <div className="App">
-      <Board/>
+      <Board />
     </div>
   );
-}
+};
 export default App;

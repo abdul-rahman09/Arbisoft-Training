@@ -44,7 +44,14 @@ const Card: FC<CardInterface> = ({
         {todos.map((item: TodoItem) => (
           <div key={item.id}>
             {!item.showEdit && (
-              <FieldWrapper onClick={()=> {setData({ ...data, text: item.text, showForm:false }); editItem(item)}}>{item.text}</FieldWrapper>
+              <FieldWrapper
+                onClick={() => {
+                  setData({ ...data, text: item.text, showForm: false });
+                  editItem(item);
+                }}
+              >
+                {item.text}
+              </FieldWrapper>
             )}
             {item.showEdit && (
               <>
@@ -68,14 +75,36 @@ const Card: FC<CardInterface> = ({
           </div>
         ))}
         {data.showForm ? (
-           <div>
-            <InputWrapper onChange={(evt: any) => setData({ ...data, text: evt.target.value })} value={data.text}/>
+          <div>
+            <InputWrapper
+              onChange={(evt: any) =>
+                setData({ ...data, text: evt.target.value })
+              }
+              value={data.text}
+            />
 
-            <StyledButton className="btn btn-success" onClick={()=> {postData(data.text);setData({ ...data, showForm: false, text: "" }) }}>Add Card</StyledButton>
-            <CrossButtonWrapper onClick={() => setData({ ...data, showForm: false, text: "" })}>X</CrossButtonWrapper>
-           </div>
+            <StyledButton
+              className="btn btn-success"
+              onClick={() => {
+                postData(data.text);
+                setData({ ...data, showForm: false, text: "" });
+              }}
+            >
+              Add Card
+            </StyledButton>
+            <CrossButtonWrapper
+              onClick={() => setData({ ...data, showForm: false, text: "" })}
+            >
+              X
+            </CrossButtonWrapper>
+          </div>
         ) : (
-          <FieldWrapper onClick={() => {setData({ ...data, showForm: true, text: "" }); closePressed()}}>
+          <FieldWrapper
+            onClick={() => {
+              setData({ ...data, showForm: true, text: "" });
+              closePressed();
+            }}
+          >
             + Add a card
           </FieldWrapper>
         )}
