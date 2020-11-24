@@ -25,7 +25,6 @@ export const TODO_ITEMS_DATA: Array<TodoItem> = [item1, item3];
 export const getTodos = (): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
   return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
     dispatch({ type: TODO_REQ });
-    // dispatch(login2());
     setTimeout(() => {
       dispatch({ type: TODO_REQ_SUCCESS });
     }, 2000);
