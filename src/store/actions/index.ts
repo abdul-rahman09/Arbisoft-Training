@@ -1,4 +1,5 @@
-import { Dispatch } from "redux";
+import { ThunkAction, ThunkDispatch } from "redux-thunk";
+import { AnyAction } from "redux";
 import {
   TODO_REQ,
   TODO_REQ_SUCCESS,
@@ -7,8 +8,6 @@ import {
   POST_TODO_REQ_SUCCESS,
 } from "store/types";
 import { TodoItem, TODO_STATUS, EDIT_STATUS } from "components/models";
-import { ThunkAction, ThunkDispatch } from "redux-thunk";
-import { AnyAction } from "redux";
 
 let item1: TodoItem = {
   id: 1,
@@ -21,37 +20,6 @@ let item3: TodoItem = {
   text: "ABC DONE",
   showEdit: EDIT_STATUS.No,
   state: TODO_STATUS.DONE,
-};
-
-export const login2 = (): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
-  // Invoke API
-  return async (dispatch: Dispatch): Promise<void> => {
-    return new Promise<void>((resolve) => {
-      // dispatch(isFetching(true))
-      console.log("Login in progress");
-      // Fake async process
-    });
-  };
-};
-export const login = (
-  username: string,
-  password: string
-): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
-  // Invoke API
-  return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
-    return new Promise<void>((resolve) => {
-      dispatch(login2());
-      console.log("Login in progress");
-      // Fake async process
-      setTimeout(() => {
-        // set
-        setTimeout(() => {
-          console.log("Login done");
-          resolve();
-        }, 1000);
-      }, 3000);
-    });
-  };
 };
 export const TODO_ITEMS_DATA: Array<TodoItem> = [item1, item3];
 export const getTodos = (): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
