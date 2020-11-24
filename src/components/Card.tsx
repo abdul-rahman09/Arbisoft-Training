@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FC } from "react";
 import { TodoItem } from "components/models";
+import TodoComponent from "containers/TodoContainer";
 import {
   FieldWrapper,
   CardWrapper,
@@ -14,16 +15,12 @@ interface CardInterface {
   getData: any;
   postData: any;
   closePressed: Function;
-  editItem: any;
-  saveEditItem: Function;
 }
 
 const Card: FC<CardInterface> = ({
   title,
   todos,
   getData,
-  saveEditItem,
-  editItem,
   postData,
   closePressed,
 }) => {
@@ -35,44 +32,29 @@ const Card: FC<CardInterface> = ({
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
+
+  function addItem() {
+    postData(data.text);
+    setData({ ...data, showForm: false, text: "" });
+  }
+
+  function showForm() {
+    setData({ ...data, showForm: true, text: "" });
+    closePressed();
+  }
 
   return (
     <CardWrapper>
       <h6>{title}</h6>
       <div>
         {todos.map((item: TodoItem) => (
-          <div key={item.id}>
-            {!item.showEdit && (
-              <FieldWrapper
-                onClick={() => {
-                  setData({ ...data, text: item.text, showForm: false });
-                  editItem(item);
-                }}
-              >
-                {item.text}
-              </FieldWrapper>
-            )}
-            {item.showEdit && (
-              <>
-                <InputWrapper
-                  onChange={(evt: any) =>
-                    setData({ ...data, text: evt.target.value })
-                  }
-                  value={data.text}
-                />
-                <StyledButton
-                  className="btn btn-success"
-                  onClick={(evt: any) => saveEditItem(data.text)}
-                >
-                  Save
-                </StyledButton>
-                <CrossButtonWrapper onClick={(evt) => closePressed(evt)}>
-                  X
-                </CrossButtonWrapper>
-              </>
-            )}
-          </div>
+          <TodoComponent
+            setData={setData}
+            data={data}
+            key={item.id}
+            item={item}
+          />
         ))}
         {data.showForm ? (
           <div>
@@ -83,13 +65,7 @@ const Card: FC<CardInterface> = ({
               value={data.text}
             />
 
-            <StyledButton
-              className="btn btn-success"
-              onClick={() => {
-                postData(data.text);
-                setData({ ...data, showForm: false, text: "" });
-              }}
-            >
+            <StyledButton className="btn btn-success" onClick={addItem}>
               Add Card
             </StyledButton>
             <CrossButtonWrapper
@@ -99,14 +75,7 @@ const Card: FC<CardInterface> = ({
             </CrossButtonWrapper>
           </div>
         ) : (
-          <FieldWrapper
-            onClick={() => {
-              setData({ ...data, showForm: true, text: "" });
-              closePressed();
-            }}
-          >
-            + Add a card
-          </FieldWrapper>
+          <FieldWrapper onClick={showForm}>+ Add a card</FieldWrapper>
         )}
       </div>
     </CardWrapper>
