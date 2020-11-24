@@ -6,18 +6,18 @@ import {
   POST_TODO_REQ,
   POST_TODO_REQ_SUCCESS,
 } from "store/types";
-import { TodoItem, TODO_STATUS } from "components/models";
+import { TodoItem, TODO_STATUS, EDIT_STATUS } from "components/models";
 
 let item1: TodoItem = {
   id: 1,
   text: "ABC",
-  showEdit: false,
+  showEdit: EDIT_STATUS.No,
   state: TODO_STATUS.PENDING,
 };
 let item3: TodoItem = {
   id: 2,
   text: "ABC DONE",
-  showEdit: false,
+  showEdit: EDIT_STATUS.No,
   state: TODO_STATUS.DONE,
 };
 export const TODO_ITEMS_DATA: Array<TodoItem> = [item1, item3];
@@ -33,7 +33,7 @@ export function postTodos(data: string) {
   const item = {
     id: Math.floor(Math.random() * 1000) + 3,
     text: data,
-    showEdit: false,
+    showEdit: EDIT_STATUS.No,
     state: TODO_STATUS.PENDING,
   };
 
@@ -51,7 +51,7 @@ export function postDone(data: string) {
   const item = {
     id: Math.floor(Math.random() * 1000) + 3,
     text: data,
-    showEdit: false,
+    showEdit: EDIT_STATUS.No,
     state: TODO_STATUS.DONE,
   };
 
@@ -69,9 +69,9 @@ export function showEditItemTodo(data: TodoItem) {
   return function (dispatch: Dispatch) {
     for (let i = 0; i < TODO_ITEMS_DATA.length; i++) {
       if (TODO_ITEMS_DATA[i].id == data.id) {
-        TODO_ITEMS_DATA[i]["showEdit"] = true;
+        TODO_ITEMS_DATA[i].showEdit = EDIT_STATUS.Yes;
       } else {
-        TODO_ITEMS_DATA[i]["showEdit"] = false;
+        TODO_ITEMS_DATA[i].showEdit = EDIT_STATUS.No;
       }
     }
     dispatch(getTodos() as any);
@@ -81,9 +81,9 @@ export function saveEditItemTodo(data: string) {
   console.log("Save", data);
   return function (dispatch: Dispatch) {
     for (let i = 0; i < TODO_ITEMS_DATA.length; i++) {
-      if (TODO_ITEMS_DATA[i].showEdit == true) {
+      if (TODO_ITEMS_DATA[i].showEdit == EDIT_STATUS.Yes) {
         TODO_ITEMS_DATA[i]["text"] = data;
-        TODO_ITEMS_DATA[i].showEdit = false;
+        TODO_ITEMS_DATA[i].showEdit = EDIT_STATUS.No;
       }
     }
     dispatch(getTodos() as any);
@@ -92,9 +92,8 @@ export function saveEditItemTodo(data: string) {
 export function closePressedTodo() {
   return function (dispatch: Dispatch) {
     for (let i = 0; i < TODO_ITEMS_DATA.length; i++) {
-      if (TODO_ITEMS_DATA[i].showEdit == true) {
-        TODO_ITEMS_DATA[i].showEdit = false;
-        console.log("edit item close pressed");
+      if (TODO_ITEMS_DATA[i].showEdit == EDIT_STATUS.Yes) {
+        TODO_ITEMS_DATA[i].showEdit = EDIT_STATUS.No;
       }
     }
     dispatch(getTodos() as any);

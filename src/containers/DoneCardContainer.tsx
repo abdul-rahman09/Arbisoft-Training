@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { getTodos, postDone, closePressedTodo } from "store/actions/index";
 import { RootState } from "store/reducer/index";
 import Card from "components/Card";
-import { todosWithDone } from "selectors";
+import { todosWithDone } from "store/selectors";
 
 const stateToProps = (state: RootState) => {
   return {

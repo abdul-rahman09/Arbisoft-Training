@@ -9,15 +9,15 @@ import {
   StyledButton,
 } from "style";
 
-interface CardInterface {
+interface ICardInterface {
   title: string;
   todos: Array<TodoItem>;
-  getData: any;
-  postData: any;
-  closePressed: Function;
+  getData: () => void;
+  postData: (obj: string) => void;
+  closePressed: () => void;
 }
 
-const Card: FC<CardInterface> = ({
+const Card: FC<ICardInterface> = ({
   title,
   todos,
   getData,

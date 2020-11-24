@@ -3,7 +3,7 @@ import { getTodos, postTodos, closePressedTodo } from "store/actions/index";
 import { RootState } from "store/reducer/index";
 import { TODO_STATUS } from "components/models";
 import Card from "components/Card";
-import { todosWithPending } from "selectors";
+import { todosWithPending } from "store/selectors";
 const stateToProps = (state: RootState) => {
   return {
     title: "Todo",

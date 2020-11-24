@@ -6,17 +6,18 @@ import {
   CrossButtonWrapper,
   StyledButton,
 } from "style";
+type TdataType = { showForm: boolean; text: string; isEdit: boolean };
 
-interface CardInterface {
+interface ITodoInterface {
   item: TodoItem;
-  closePressed: Function;
-  editItem: any;
-  saveEditItem: Function;
-  setData: Function;
-  data: { showForm: boolean; text: string; isEdit: boolean };
+  closePressed: (evt: React.MouseEvent) => void;
+  editItem: (obj: TodoItem) => void;
+  saveEditItem: (obj: string) => void;
+  setData: (obj: TdataType) => void;
+  data: TdataType;
 }
 
-const Card: FC<CardInterface> = ({
+const Card: FC<ITodoInterface> = ({
   item,
   saveEditItem,
   editItem,
@@ -40,7 +41,9 @@ const Card: FC<CardInterface> = ({
           >
             Save
           </StyledButton>
-          <CrossButtonWrapper onClick={(evt) => closePressed(evt)}>
+          <CrossButtonWrapper
+            onClick={(evt: React.MouseEvent) => closePressed(evt)}
+          >
             X
           </CrossButtonWrapper>
         </>
