@@ -1,0 +1,7 @@
+export const TODO_REQ = "TODO_REQ";
+export const TODO_REQ_SUCCESS = "TODO_REQ_SUCCESS";
+export const TODO_REQ_ERR = "TODO_REQ_ERR";
+export const POST_TODO_REQ = "POST_TODO_REQ";
+export const POST_TODO_REQ_SUCCESS = "POST_TODO_REQ_SUCCESS";
+export const POST_TODO_REQ_ERR = "POST_TODO_REQ_ERR";
+export const POST_TODO_REQ_RESET = "POST_TODO_REQ_RESET";
